@@ -12,7 +12,7 @@ root.title("Jake It")
 root.configure(bg=darkgrey)
 root.resizable(False, False)
 
-version = Label(root, text="v1.1", fg=blue, bg=darkgrey)
+version = Label(root, text="v1.2", fg=blue, bg=darkgrey)
 version.place(x=0, y=0)
 
 textlabel = Label(root, text="Jessage Jo Jake", fg=blue, bg=darkgrey)
@@ -20,7 +20,7 @@ textlabel.grid(row=6, column=0)
 jaketext = Text(root, width=200, borderwidth=5, fg=white, bg=grey)
 jaketext.grid(row=7, column=0)
 
-allowed = ["a", "e", "i", "o", "u"]
+allowed = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
 
 def convert(string):
@@ -30,15 +30,18 @@ def convert(string):
 
 def jake():
     message = jaketext.get("1.0", END)
-    message = message.lower()
     message = message.replace("  ", " ")
     message = convert(message)
     jessage = ""
     piss = 0
     while piss in range(len(message)):
         holding = message[piss]
-        if holding[0] in allowed:
+        if holding[0] in allowed and holding[0].isupper() is True:
+            jessage += "J" + holding.replace(holding[0], holding[0].lower(), 1) + " "
+        elif holding[0] in allowed:
             jessage += "j" + holding + " "
+        elif holding[0].isupper() is True:
+            jessage += holding.replace(holding[0], "J", 1) + " "
         else:
             jessage += holding.replace(holding[0], "j", 1) + " "
         piss += 1
