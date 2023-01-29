@@ -12,6 +12,9 @@ root.title("Jake It")
 root.configure(bg=darkgrey)
 root.resizable(False, False)
 
+version = Label(root, text="v1.1", fg=blue, bg=darkgrey)
+version.place(x=0, y=0)
+
 textlabel = Label(root, text="Jessage Jo Jake", fg=blue, bg=darkgrey)
 textlabel.grid(row=6, column=0)
 jaketext = Text(root, width=200, borderwidth=5, fg=white, bg=grey)
@@ -28,6 +31,7 @@ def convert(string):
 def jake():
     message = jaketext.get("1.0", END)
     message = message.lower()
+    message = message.replace("  ", " ")
     message = convert(message)
     jessage = ""
     piss = 0
